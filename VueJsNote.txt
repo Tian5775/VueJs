@@ -1,0 +1,47 @@
+### 起步
+每个 Vue 应用都需要通过实例化 Vue 来实现。
+语法格式如下：
+var vm = new Vue({
+  // 选项
+})
+实例
+<div id="vue_det">
+    <h1>site : {{site}}</h1>
+    <h1>url : {{url}}</h1>
+    <h1>{{details()}}</h1>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        //el 参数，它是 DOM 元素中的 id
+        el: '#vue_det',
+        //data 用于定义属性，实例中有三个属性分别为：site、url、alexa。
+        data: {
+            site: "菜鸟教程",
+            url: "www.runoob.com",
+            alexa: "10000"
+        },
+        //methods 用于定义的函数，可以通过 return 来返回函数值。
+        methods: {
+            details: function() {
+                return  this.site + " - 学的不仅是技术，更是梦想！";
+            }
+        }
+    })
+</script>
+
+
+### 实例属性
+Vue 实例还提供了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+例：
+// 我们的数据对象
+var data = { site: "菜鸟教程", url: "www.runoob.com", alexa: 10000}
+var vm = new Vue({
+    el: '#vue_det',
+    data: data
+})
+
+document.write(vm.$data === data) // true
+document.write("<br>") // true
+document.write(vm.$el === document.getElementById('vue_det')) // true
+
+

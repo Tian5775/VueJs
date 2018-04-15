@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../vue.min.js"></script>
+</head>
+<body>
+    <div id="vue_det"></div>
+    <script>
+        var data = {
+            site: 'Tian-Blog',
+            url: 'www.tian5775.top',
+            data: 100
+        }
+        var vm = new Vue({
+            el: '#vue_det',
+            data: data
+        });
+
+        //Vue 实例还提供了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+        document.write(vm.data + "<br/>");
+        document.write(vm.$data === data);
+        document.write("<br/>");
+    </script>
+
+</body>
+</html>
