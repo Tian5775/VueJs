@@ -4,11 +4,60 @@
     <meta charset="UTF-8">
     <title>模板</title>
     <script type="text/javascript" src="../vue.min.js"></script>
+    <style type="text/css">
+        .class1{
+            background: lawngreen;
+        }
+    </style>
 </head>
 <body>
     <div id="vue_det">
-        <div></div>
+        <!--文本-->
+        <h1>{{message}}</h1>
 
+        <!--html-->
+        <div v-html="html"></div>
+
+        <!--属性-->
+        <div v-bind:class="{'class1':class2}">属性</div>
+
+        <!--表达式-->
+        <div>
+            <h1>{{5 + 5}}</h1>
+            <h1>{{data1 > data2 ? data1 : data2}}</h1>
+            <h1>{{ message.split('').reverse().join('') }}</h1>
+        </div>
+
+        <!--指令-->
+        <div>
+            <button v-on:click="hideFunc">Show Or hide</button>
+            <p v-if="seen">现在你可以看到我了</p>
+        </div>
+
+        <!--参数-->
+        <div>
+            <a v-bind:href="url">Tian-Blog</a>
+        </div>
     </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#vue_det',
+            data: {
+                message: 'message',
+                html: '<h1>html</h1>',
+                class2: true,
+                data1: 7,
+                data2: 9,
+                seen: true,
+                url: 'http://www.tian5775.top'
+            },
+            methods: {
+                hideFunc: function(){
+                    this.seen = !this.seen;
+                }
+            }
+
+        });
+    </script>
 </body>
 </html>
