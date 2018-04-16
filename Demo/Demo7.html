@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>计算属性：computed</title>
+    <script type="text/javascript" src="../vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{reversedMessage}}</p>
+        <p>{{site}}</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World!',
+                name: 'Google',
+                url: 'www.google.com'
+            },
+            computed: {
+                //提供的函数将用作属性 vm.reversedMessage 的 getter
+                reversedMessage: function() {
+                    return this.message.split("").reverse().join("");
+                },
+
+                // 属性默认只有 getter ，不过在需要时你也可以提供一个 setter
+                site: {
+                    get: function(){
+                        return this.name + "：" + this.url;
+                    },
+                    set: function(value){
+                        var newValue = value.split("：");
+                        this.name = newValue[0];
+                        this.url = newValue[1];
+                    }
+                }
+            }
+        });
+
+        app.site = "Baidu：www.baidu.com";
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>条件</title>
+    <script type="text/javascript" src="../vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if = "data == 'A'">A</p>
+        <p v-else-if = "data == 'B'">B</p>
+        <p v-else-if = "data == 'C'">C</p>
+        <p v-else = "data == 'D'">D</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                data: 'B'
+            }
+        })
+    </script>
+</body>
+</html>

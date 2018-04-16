@@ -75,3 +75,66 @@ Vue.js ÔÊÐíÄã×Ô¶¨Òå¹ýÂËÆ÷£¬±»ÓÃ×÷Ò»Ð©³£¼ûµÄÎÄ±¾¸ñÊ½»¯¡£ÓÉ"¹ÜµÀ·û"Ö¸Ê¾, ¸ñÊ½ÈçÏÂ£
 ¹ýÂËÆ÷ÊÇ JavaScript º¯Êý£¬Òò´Ë¿ÉÒÔ½ÓÊÜ²ÎÊý£º
 {{ message | filterA('arg1', arg2) }}
 ÕâÀï£¬message ÊÇµÚÒ»¸ö²ÎÊý£¬×Ö·û´® 'arg1' ½«´«¸ø¹ýÂËÆ÷×÷ÎªµÚ¶þ¸ö²ÎÊý£¬ arg2 ±í´ïÊ½µÄÖµ½«±»ÇóÖµÈ»ºó´«¸ø¹ýÂËÆ÷×÷ÎªµÚÈý¸ö²ÎÊý¡£
+
+### Ìõ¼þ
+v-if Ö¸Áî½«¸ù¾Ý±í´ïÊ½µÄÖµ(true »ò false )À´¾ö¶¨ÊÇ·ñ²åÈëÔªËØ¡£
+Àý£º
+<p v-if="seen">ÏÖÔÚÄã¿´µ½ÎÒÁË</p>
+<template v-if="ok">
+  <h1>²ËÄñ½Ì³Ì</h1>
+  <p>Ñ§µÄ²»½öÊÇ¼¼Êõ£¬¸üÊÇÃÎÏë£¡</p>
+  <p>¹þ¹þ¹þ£¬´ò×ÖÐÁ¿à°¡£¡£¡£¡</p>
+</template>
+
+v-else(v-else-if) Ö¸Áî¸ø v-if Ìí¼ÓÒ»¸ö "else" ¿é£º
+Àý£º
+<div id="app">
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+</div>
+
+v-show Ö¸ÁîÀ´¸ù¾ÝÌõ¼þÕ¹Ê¾ÔªËØ:
+Àý£º
+<h1 v-show="ok">Hello!</h1>
+
+v-show Óë v-ifµÄÇø±ð£º
+v-if ÊÇÕæÊµµÄÌõ¼þäÖÈ¾£¬ÒòÎªËü»áÈ·±£Ìõ¼þ¿éÔÚÇÐ»»µ±ÖÐºÏÊÊµØÏú»ÙÓëÖØ½¨Ìõ¼þ¿éÄÚµÄÊÂ¼þ¼àÌýÆ÷ºÍ×Ó×é¼þ¡£
+v-show ¼òµ¥µÃ¶à¡ª¡ªÔªËØÊ¼ÖÕ±»±àÒë²¢±£Áô£¬Ö»ÊÇ¼òµ¥µØ»ùÓÚ CSS ÇÐ»»¡£
+Ò»°ãÀ´Ëµ£¬v-if ÓÐ¸ü¸ßµÄÇÐ»»ÏûºÄ¶ø v-show ÓÐ¸ü¸ßµÄ³õÊ¼äÖÈ¾ÏûºÄ¡£Òò´Ë£¬Èç¹ûÐèÒªÆµ·±ÇÐ»» v-show ½ÏºÃ£¬Èç¹ûÔÚÔËÐÐÊ±Ìõ¼þ²»´ó¿ÉÄÜ¸Ä±ä v-if ½ÏºÃ¡£
+
+### Ñ­»·
+v-for Ö¸ÁîÐèÒªÒÔ site in sites ÐÎÊ½µÄÌØÊâÓï·¨£¬ sites ÊÇÔ´Êý¾ÝÊý×é²¢ÇÒ site ÊÇÊý×éÔªËØµü´úµÄ±ðÃû¡£¿ÉÒÔÌá¹©µÚ¶þ¸öµÄ²ÎÊýÎª¼üÃû,µÚÈý¸ö²ÎÊýÎªË÷Òý£¨ÏêÇé¼ûDemo6£©¡£
+Àý£º
+<div id="app">
+  <ol>
+    <li v-for="site in sites">
+      {{ site.name }}
+    </li>
+  </ol>
+</div>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    sites: [
+      { name: 'Runoob' },
+      { name: 'Google' },
+      { name: 'Taobao' }
+    ]
+  }
+})
+</script>
+
+### ¼ÆËãÊôÐÔ
+computed ÊôÐÔÄ¬ÈÏÖ»ÓÐ getter £¬²»¹ýÔÚÐèÒªÊ±ÄãÒ²¿ÉÒÔÌá¹©Ò»¸ö setter¡£
+¿ÉÒÔÊ¹ÓÃ methods À´Ìæ´ú computed£¬Ð§¹ûÉÏÁ½¸ö¶¼ÊÇÒ»ÑùµÄ£¬µ«ÊÇ computed ÊÇ»ùÓÚËüµÄÒÀÀµ»º´æ£¬Ö»ÓÐÏà¹ØÒÀÀµ·¢Éú¸Ä±äÊ±²Å»áÖØÐÂÈ¡Öµ¡£¶øÊ¹ÓÃ methods £¬ÔÚÖØÐÂäÖÈ¾µÄÊ±ºò£¬º¯Êý×Ü»áÖØÐÂµ÷ÓÃÖ´ÐÐ¡£
