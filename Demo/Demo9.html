@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>样式绑定</title>
+    <script type="text/javascript" src="../vue.min.js"></script>
+    <style type="text/css">
+        .all{
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .color1{
+            background: lightcoral;
+        }
+
+        .color2{
+            background: lightgreen;
+        }
+
+        .color3{
+            background: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--变量-->
+        <div class="all" v-bind:class="class1"></div>
+
+        <div class="all" v-bind:class="{'color2': showClass1, 'color3':showClass3}"></div>
+
+        <div class="all" v-bind:class="class3Ary"></div>
+
+        <!--数组-->
+        <div class="all" v-bind:class="[class1,class2]"></div>
+
+        <!--三元表达式-->
+        <div class="all" v-bind:class="showClass1? class1: '' "></div>
+
+        <!--内联样式-->
+        <div class="all" v-bind:style="{background: color,fontSize: fSize + 'px'}"></div>
+
+        <div class="all" v-bind:style="style1"></div>
+
+        <div class="all" v-bind:style="[style1,style2]"></div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data:{
+                class1: 'color1',
+                class2: 'color2',
+                class3: 'color3',
+                showClass1: true,
+                showClass2: true,
+                showClass3: true,
+                class3Ary: {
+                    'color3': true
+                },
+                color: 'black',
+                fSize: 15,
+                style1: {
+                    background: 'yellow'
+                },
+                style2: {
+                    width: '100px'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
