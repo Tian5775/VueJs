@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="../vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+        <p v-color="{'text': 'Tian-Blog', 'color': a}">1111</p>
+    </div>
+    <script type="text/javascript">
+        Vue.directive('focus',{
+            inserted: function(el){
+                el.focus();
+            }
+        });
+
+        Vue.directive('color',function(el,binding){
+            el.innerHTML = binding.value.text;
+            el.style.color = binding.value.color;
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                a: 'blue'
+            }
+        })
+
+    </script>
+</body>
+</html>
